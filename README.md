@@ -1,15 +1,15 @@
 # XmlMatchers
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/xml_matchers`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Validates XML against XSD (XML schemas)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'xml_matchers'
+group :test do
+  gem "xml_matchers"
+end
 ```
 
 And then execute:
@@ -22,7 +22,39 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Inspired by [json_matchers](https://github.com/thoughtbot/json_matchers)
+
+First configure it in your test suite's helper file:
+
+### Rspec
+
+`spec/spec_helper`
+
+```ruby
+require "xml_matchers/rspec"
+```
+
+## Declare
+
+Declare your XML Schema in the schema directory:
+
+`spec/support/xml/schemas/location.xsd`
+
+## Validate
+
+Validate an XML response or an String against an XML schema with
+`match_xml_schema`:
+
+```ruby
+describe "GET /locations" do
+  it "returns locations" do
+    get locations_path, format: :xml
+
+    expect(response.status).to eq 200
+    expect(response.body).to match_xml_schema("locations")
+  end
+end
+```
 
 ## Development
 
