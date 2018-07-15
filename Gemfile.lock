@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     xml_matchers (0.1.0)
-      nokogiri (~> 1.8.4)
 
 GEM
   remote: https://rubygems.org/
@@ -51,6 +50,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   factory_bot (>= 4.8)
+  nokogiri (~> 1.8.4)
   pry
   rake (~> 10.0)
   rspec (~> 3.0)
