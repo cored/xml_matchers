@@ -12,7 +12,7 @@ RSpec::Matchers.define :match_xml_schema do |schema_content|
     raise XmlMatchers::InvalidSchemaError
   end
 
-  build_schema_for(schema_content)
+  schema = build_schema_for(schema_content)
 
   match do |xml|
     document = Nokogiri::XML(xml)
