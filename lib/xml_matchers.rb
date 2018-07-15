@@ -17,7 +17,7 @@ module XmlMatchers
 
     def valid?(xml_content)
       xml_document = Nokogiri::XML(xml_content)
-      xml_schema.valid?(xml_documet)
+      xml_schema.valid?(xml_document)
     end
 
     private
