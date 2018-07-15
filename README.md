@@ -36,9 +36,9 @@ require "xml_matchers/rspec"
 
 ## Declare
 
-Declare your XML Schema in the schema directory:
+Declare your XML Schema wherever you see fit for your project structure:
 
-`spec/support/xml/schemas/location.xsd`
+eg.  `spec/support/xml/schemas/locations.xsd`
 
 ## Validate
 
@@ -47,11 +47,15 @@ Validate an XML response or an String against an XML schema with
 
 ```ruby
 describe "GET /locations" do
+  let(:locations_xml_schema) do
+    File.read("#{File.pwd}/spec/support/xml/schemas/locations.xsd")
+  end
+
   it "returns locations" do
     get locations_path, format: :xml
 
     expect(response.status).to eq 200
-    expect(response.body).to match_xml_schema("locations")
+    expect(response.body).to match_xml_schema(locations_xml_schema)
   end
 end
 ```
