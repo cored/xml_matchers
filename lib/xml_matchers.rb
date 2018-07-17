@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'nokogiri'
+
 require 'xml_matchers/assertion'
 require 'xml_matchers/version'
 
